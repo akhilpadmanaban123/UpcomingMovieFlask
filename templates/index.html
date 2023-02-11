@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Upcoming Movies</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#featured">Featured</a></li>
+          <li><a href="#genres">Genres</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="featured">
+        <h1 class="text-primary text-center mb-5 mt-5 display-3">Upcoming Movies</h1>
+        <div class="movie-container">
+          {% for movie in movies %}
+            <div class="movie-box">
+              <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="{{ movie.title }}">
+              <h2>{{ movie.title }}</h2>
+              <p>Release Date: {{ movie.release_date }}</p>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="text-center mt-3">
+          <button class="btn btn-primary">Next Page</button>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p class="text-center">&copy; 2023 Upcoming Movies</p>
+    </footer>
+  </body>
+</html>
